@@ -1,11 +1,13 @@
 package com.example.hellospring;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Component
 @RequiredArgsConstructor
 public class PaymentService {
 	private final ExchangeRateReader exchangeRateReader;
