@@ -1,19 +1,17 @@
 package com.example.hellospring;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class PaymentService {
+	private final ExchangeRateReader exchangeRateReader;
+
 	public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws IOException {
-		var exchangeRate = getExchangeRate(currency);
+		var exchangeRate = this.exchangeRateReader.getExchangeRate(currency);
 		var convertedAmount = foreignCurrencyAmount.multiply(exchangeRate);
 		var validUntil = LocalDateTime.now().plusMinutes(30);
 
@@ -25,23 +23,5 @@ public class PaymentService {
 			.convertedAmount(convertedAmount)
 			.validUntil(validUntil)
 			.build();
-	}
-
-	private static BigDecimal getExchangeRate(String currency) throws IOException {
-		var url = new URL("https://open.er-api.com/v6/latest/" + currency);
-		var connection = (HttpURLConnection) url.openConnection();
-		var br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		var response = br.lines().collect(Collectors.joining());
-		br.close();
-
-		var mapper = new ObjectMapper();
-		var exchangeRateData = mapper.readValue(response, ExchangeRateData.class);
-		return exchangeRateData.rates().get("KRW");
-	}
-
-	public static void main(String[] args) throws IOException {
-		var paymentService = new PaymentService();
-		var payment = paymentService.prepare(1L, "USD", BigDecimal.valueOf(1000.3));
-		System.out.println(payment);
 	}
 }
