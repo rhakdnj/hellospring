@@ -1,7 +1,6 @@
 package com.example.hellospring.exchangeRate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-@Component("webExchangeRateReader")
 public class WebExchangeRateReader implements ExchangeRateReader {
 	@Override
 	public BigDecimal getExchangeRate(String currency) throws IOException {
