@@ -1,6 +1,8 @@
-package com.example.hellospring;
+package com.example.hellospring.payment;
 
+import com.example.hellospring.exchangeRate.ExchangeRateReader;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -8,9 +10,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Component
-@RequiredArgsConstructor
 public class PaymentService {
 	private final ExchangeRateReader exchangeRateReader;
+
+	public PaymentService(@Qualifier("cachedWebExchangeRateReader")ExchangeRateReader exchangeRateReader) {
+		this.exchangeRateReader = exchangeRateReader;
+	}
 
 	public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws IOException {
 		var exchangeRate = this.exchangeRateReader.getExchangeRate(currency);

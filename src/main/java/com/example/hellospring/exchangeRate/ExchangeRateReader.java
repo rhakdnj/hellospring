@@ -1,4 +1,4 @@
-package com.example.hellospring;
+package com.example.hellospring.exchangeRate;
 
 import java.io.IOException;
 import java.math.BigDecimal;

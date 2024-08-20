@@ -33,3 +33,7 @@ Interface를 도입하면 인터페이스를 의존하는 코드는 변경이 �
 Inversion of Control 원래 갖고 있던 제어권(어떤 Object를 사용 할지) beanFactory
 
 만들어진 오브젝트를 제공하며 관계 설정까지 해주는 DI 컨테이너이다.
+
+### Qualifier
+
+Qualifier 로 하드 코딩 (not good!)

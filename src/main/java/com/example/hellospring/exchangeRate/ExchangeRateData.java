@@ -1,4 +1,4 @@
-package com.example.hellospring;
+package com.example.hellospring.exchangeRate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
