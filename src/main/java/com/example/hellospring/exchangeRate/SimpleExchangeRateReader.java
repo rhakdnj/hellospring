@@ -1,5 +1,7 @@
 package com.example.hellospring.exchangeRate;
 
+import com.example.hellospring.payment.ExchangeRateReader;
+
 import java.math.BigDecimal;
 
 public class SimpleExchangeRateReader implements ExchangeRateReader {

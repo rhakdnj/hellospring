@@ -1,5 +1,6 @@
 package com.example.hellospring.exchangeRate;
 
+import com.example.hellospring.payment.ExchangeRateReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;

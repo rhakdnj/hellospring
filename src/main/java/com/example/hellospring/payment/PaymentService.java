@@ -1,6 +1,5 @@
 package com.example.hellospring.payment;
 
-import com.example.hellospring.exchangeRate.ExchangeRateReader;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
