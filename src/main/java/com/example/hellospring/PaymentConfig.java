@@ -5,14 +5,15 @@ import com.example.hellospring.payment.ExchangeRateReader;
 import com.example.hellospring.exchangeRate.WebExchangeRateReader;
 import com.example.hellospring.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.Clock;
+
 @Configuration
-public class ObjectFactory {
+public class PaymentConfig {
 	@Bean
 	public PaymentService paymentService() {
-		return new PaymentService(cachedWebExchangeRateReader());
+		return new PaymentService(cachedWebExchangeRateReader(), clock());
 	}
 
 	@Bean
@@ -23,5 +24,10 @@ public class ObjectFactory {
 	@Bean
 	public ExchangeRateReader exchangeRateReader() {
 		return new WebExchangeRateReader();
+	}
+
+	@Bean
+	public Clock clock() {
+		return Clock.systemDefaultZone();
 	}
 }

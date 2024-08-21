@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class Client {
 	public static void main(String[] args) throws IOException {
-		var beanFactory = new AnnotationConfigApplicationContext(ObjectFactory.class);
+		var beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
 		var paymentService = beanFactory.getBean(PaymentService.class);
 
 		var payment = paymentService.prepare(1L, "USD", BigDecimal.valueOf(1000.3));
