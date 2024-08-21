@@ -37,3 +37,8 @@ Inversion of Control 원래 갖고 있던 제어권(어떤 Object를 사용 할�
 ### Qualifier
 
 Qualifier 로 하드 코딩 (not good!)
+
+
+### 스프링 DI를 이용하는 테스트
+
+스프링 컨테이너가 스프링의 구성 정보를 이용해서 지정하고 컨테이너로부터 테스트 대상을 가져와서 테스트

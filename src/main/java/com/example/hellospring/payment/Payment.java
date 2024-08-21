@@ -1,11 +1,13 @@
 package com.example.hellospring.payment;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Getter
 @ToString
 @Builder
 public class Payment {
