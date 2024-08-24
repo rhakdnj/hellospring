@@ -1,8 +1,11 @@
 package com.example.hellospring;
 
+import com.example.hellospring.api.ApiTemplate;
+import com.example.hellospring.api.ErApiExchangeRateExtractor;
+import com.example.hellospring.api.SimpleApiExecutor;
 import com.example.hellospring.exchangeRate.CachedWebExchangeRateReader;
+import com.example.hellospring.exchangeRate.WebApiExchangeRateReader;
 import com.example.hellospring.payment.ExchangeRateReader;
-import com.example.hellospring.exchangeRate.WebExchangeRateReader;
 import com.example.hellospring.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +25,13 @@ public class PaymentConfig {
 	}
 
 	@Bean
+	public ApiTemplate apiTemplate() {
+		return new ApiTemplate(new SimpleApiExecutor(), new ErApiExchangeRateExtractor());
+	}
+
+	@Bean
 	public ExchangeRateReader exchangeRateReader() {
-		return new WebExchangeRateReader();
+		return new WebApiExchangeRateReader(apiTemplate());
 	}
 
 	@Bean

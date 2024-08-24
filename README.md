@@ -54,3 +54,11 @@ Qualifier 로 하드 코딩 (not good!)
 
 1. 트랜잭션 스크립트 - 서비스 메서드 (PaymentService.prepare)
 2. 도메인 모델 - 도메인 모델 오브젝트 (Payment)
+
+### 콜백(Callback)
+
+콜백(callback)은 실행되는 것을 목적으로 다른 오브젝트의 메서드에 전달되는 오브젝트
+
+파라미터로 전달되지만 값을 참조하기 위한 것이 아니라 특정 로직은 담은 메서를 실행 시키는 것이 목적
+
+하나의 메서드를 가진 인터페이스 타입(SAM(Single Abstract Method))의 오브젝트 또는 람다 오브젝트
