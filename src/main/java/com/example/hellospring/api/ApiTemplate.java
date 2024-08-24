@@ -1,6 +1,5 @@
 package com.example.hellospring.api;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class ApiTemplate {
 		this.exchangeRateExtractor = exchangeRateExtractor;
 	}
 
-	public BigDecimal getForExchangeRate(String url) throws JsonProcessingException {
+	public BigDecimal getForExchangeRate(String url) {
 		URI uri;
 		try {
 			uri = new URI(url);
@@ -49,7 +48,7 @@ public class ApiTemplate {
 
 		try {
 			return exchangeRateExtractor.extract(response);
-		} catch (JsonParseException e) {
+		} catch (JsonProcessingException e) {
 			throw new RuntimeException(e);
 		}
 	}

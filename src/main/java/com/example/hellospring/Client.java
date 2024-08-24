@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class Client {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		var beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
 		var paymentService = beanFactory.getBean(PaymentService.class);
 
