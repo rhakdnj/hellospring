@@ -1,6 +1,5 @@
 package com.example.hellospring;
 
-import com.example.hellospring.repository.OrderRepository;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;

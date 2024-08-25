@@ -1,10 +1,10 @@
-package com.example.hellospring.repository;
+package com.example.hellospring.infra.repository;
 
 import com.example.hellospring.order.Order;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-public class OrderRepository {
+public class JpaOrderRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 

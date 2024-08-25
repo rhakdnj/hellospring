@@ -1,6 +1,5 @@
 package com.example.hellospring.order;
 
-import com.example.hellospring.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class OrderService {
 	private final JpaTransactionManager transactionManager;
 
 	public Order createOrder(OrderNumber orderNumber, BigDecimal totalPrice) {
-		Order order = new Order(orderNumber.value(), totalPrice);
+		var order = new Order(orderNumber.value(), totalPrice);
 
 		return new TransactionTemplate(transactionManager).execute(status -> {
 			orderRepository.save(order);
