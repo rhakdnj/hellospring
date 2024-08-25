@@ -20,11 +20,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = OrderConfig.class)
 class OrderServiceSpringTest {
-	private final OrderService orderService;
+	private final OrderSpringTxService orderService;
 	private final DataSource dataSource;
 
 	public OrderServiceSpringTest(
-		@Autowired OrderService orderService,
+		@Autowired OrderSpringTxService orderService,
 		@Autowired DataSource dataSource
 	) {
 		this.orderService = orderService;
