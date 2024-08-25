@@ -25,10 +25,15 @@ public class Order {
 	@Column(unique = true)
 	private String number;
 
+	@Column(name = "total_price")
 	private BigDecimal totalPrice;
 
 	public Order(String number, BigDecimal totalPrice) {
 		this.number = number;
 		this.totalPrice = totalPrice;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

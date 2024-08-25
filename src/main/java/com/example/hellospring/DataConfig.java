@@ -24,9 +24,6 @@ public class DataConfig {
 			.build();
 	}
 
-	/*
-	 * JPA
-
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
@@ -46,11 +43,15 @@ public class DataConfig {
 	public BeanPostProcessor persistenceAnnotationBeanPostProcessor() {
 		return new PersistenceAnnotationBeanPostProcessor();
 	}
-     *
-     */
+
 
 	@Bean
-	public PlatformTransactionManager transactionManager(){
+	public PlatformTransactionManager jpaTransactionManager(EntityManagerFactory emf) {
+		return new JpaTransactionManager(emf);
+	}
+
+	@Bean
+	public PlatformTransactionManager jdbcTransactionManager(){
 		return new DataSourceTransactionManager(dataSource());
 	}
 }
