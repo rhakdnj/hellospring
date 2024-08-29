@@ -25,7 +25,6 @@ public class Reservation {
 	private Long customerId;
 	private Long screeningId;
 	private Integer audienceCount;
-	@Embedded
-	@AttributeOverride(name = "amount", column = @Column(name = "fee"))
+	@Embedded @AttributeOverride(name = "amount", column = @Column(name = "fee"))
 	private Money fee;
 }
